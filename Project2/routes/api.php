@@ -23,26 +23,25 @@ use App\Http\Controllers\ReviewController;
 Route::group(['prefix' => 'Recipe'], function () {
     Route::get('/', [RecipeController::class, 'index']);
     Route::get('find', [RecipeController::class, 'find']);
-/*    Route::post('/', [MenuController::class, 'store']);
-    Route::put('/', [MenuController::class, 'update']);
-    Route::delete('/', [MenuController::class, 'delete']);*/
-   
+    Route::post('addrecipe', [RecipeController::class, 'addrecipe']);
+    //Route::put('/', [RecipeController::class, 'update']);
+    //Route::delete('/', [RecipeController::class, 'delete']);
 });
 
 Route::group(['prefix' => 'User'], function () {
     Route::get('/', [UserController::class, 'index']);
     Route::get('find', [UserController::class, 'find']);
-/*    Route::post('/', [MenuController::class, 'store']);
-    Route::put('/', [MenuController::class, 'update']);
-    Route::delete('/', [MenuController::class, 'delete']);*/
+    Route::post('adduser', [UserController::class, 'adduser']);
+    //Route::put('/', [UserController::class, 'update']);
+    //Route::delete('/', [UserController::class, 'delete']);
    
 });
 
 Route::group(['prefix' => 'Review'], function () {
     Route::get('/', [ReviewController::class, 'index']);
     Route::get('find', [ReviewController::class, 'find']);
-/*    Route::post('/', [MenuController::class, 'store']);
-    Route::put('/', [MenuController::class, 'update']);
-    Route::delete('/', [MenuController::class, 'delete']);*/
+    Route::post('addreview', [ReviewController::class, 'addreview']);
+    //Route::put('/', [ReviewController::class, 'update']);
+    //Route::delete('/', [ReviewController::class, 'delete']);
    
 });
