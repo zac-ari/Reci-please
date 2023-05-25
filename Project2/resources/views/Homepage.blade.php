@@ -142,11 +142,11 @@
 			<img src="pasta.gif">
 			
 			<!--Button to Sign in (also leads to register if youe not a member)-->
-			<a href="Login.html" class="login-button">Sign in</a>
+			<a href="Login.blade.php" class="login-button">Sign in</a>
 			
 			<!--Welcome Display-->
 			<div class="text-container1">
-				<a href="User Homepage.html"><!--Needs to be removed only there as a way to bypass the login-->
+				<a href="UserHomepage.html"><!--Needs to be removed only there as a way to bypass the login-->
 				<h1 class="display-4 text-center">Welcome to Reci-Please</h1>
 				<hr class="my-4">
 				<p class="lead text-center">A place you can store and share you family recipes</p>
