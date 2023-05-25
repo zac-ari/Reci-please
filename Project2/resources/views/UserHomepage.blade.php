@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Recipe View</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Below is the bootstrap and Css used in labs it may need refinement/not sure what is needed -->
+
+<!--Bootstrap CSS-->
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1
+T" crossorigin="anonymous">
+
+<!--Custom CSS-->
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .text-container1 {
+        background-color: rgba(255, 255, 255, 0.6);
+        padding: 10px;
+        position: absolute;
+        top: 16%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .text-container1 h1,
+    .text-container1 p {
+        color: #000000;
+    }
+
+    .text-container2 {
+        background-color: rgba(193, 233, 201, 0.8);
+        padding: 10px;
+        position: absolute;
+        top: 45%;
+        left: 17.5%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .text-container2:hover {
+        background-color: rgba(193, 233, 201, 1);
+    }
+
+    .text-container2 p {
+        color: #333333;
+    }
+
+    .text-container2a {
+        background-color: rgba(193, 233, 201, 0.8);
+        padding: 10px;
+        position: absolute;
+        top: 67%;
+        left: 17.5%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .text-container2a:hover {
+        background-color: rgba(193, 233, 201, 1);
+    }
+
+    .text-container2a p {
+        color: #333333;
+    }
+
+    .text-container2b {
+        background-color: rgba(193, 233, 201, 0.8);
+        padding: 10px;
+        position: absolute;
+        top: 89%;
+        left: 17.5%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .text-container2b:hover {
+        background-color: rgba(193, 233, 201, 1);
+    }
+
+    .text-container2b p {
+        color: #333333;
+    }
+
+    .text-container3 {
+        background-color: rgba(243, 202, 174, 0.8);
+        padding: 10px;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .text-container3:hover {
+        background-color: rgba(243, 202, 174, 1);
+    }
+
+    .text-container3 p {
+        color: #333333;
+    }
+
+    .text-container3a {
+        background-color: rgba(243, 202, 174, 0.8);
+        padding: 10px;
+        position: absolute;
+        top: 67%;
+        left: 50%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .text-container3a:hover {
+        background-color: rgba(243, 202, 174, 1);
+    }
+
+    .text-container3a p {
+        color: #333333;
+    }
+
+    .text-container3b {
+        background-color: rgba(243, 202, 174, 0.8);
+        padding: 10px;
+        position: absolute;
+        top: 89%;
+        left: 50%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .text-container3b:hover {
+        background-color: rgba(243, 202, 174, 1);
+    }
+
+    .text-container3b p {
+        color: #333333;
+    }
+
+    .text-container4 {
+        background-color: rgba(196, 195, 219, 0.8);
+        padding: 10px;
+        position: absolute;
+        top: 45%;
+        left: 82.5%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .text-container4:hover {
+        background-color: rgba(196, 195, 219, 1);
+    }
+
+    .text-container4 p {
+        color: #333333;
+    }
+
+    .text-container4a {
+        background-color: rgba(196, 195, 219, 0.8);
+        padding: 10px;
+        position: absolute;
+        top: 67%;
+        left: 82.5%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .text-container4a:hover {
+        background-color: rgba(196, 195, 219, 1);
+    }
+
+    .text-container4a p {
+        color: #333333;
+    }
+
+    .text-container4b {
+        background-color: rgba(196, 195, 219, 0.8);
+        padding: 10px;
+        position: absolute;
+        top: 89%;
+        left: 82.5%;
+        width: 25%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .text-container4b:hover {
+        background-color: rgba(196, 195, 219, 1);
+    }
+
+    .text-container4b p {
+        color: #333333;
+    }
+    
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.6;
+    }
+
+    .login-button {
+        background-color: rgba(197, 62, 8, 0.8);
+        padding: 10px 20px;
+        position: absolute;
+        top: 4%;
+        left: 3.5%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #000000;
+    }
+
+    .login-button:hover {
+        background-color: rgba(197, 62, 8, 1);
+    }
+
+    .register-button {
+        background-color: rgba(197, 62, 8, 0.8);
+        padding: 10px 20px;
+        position: absolute;
+        top: 12%;
+        left: 3.5%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #000000;
+    }
+
+    .register-button:hover {
+        background-color: rgba(157, 150, 147, 0.8);
+    }
+
+    .add-button {
+        background-color: rgba(197, 62, 8, 0.8);
+        padding: 10px 20px;
+        position: absolute;
+        top: 4%;
+        right: -4%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #000000;
+    }
+
+    .add-button:hover {
+        background-color: rgba(197, 62, 8, 1);
+    }
+
+    .search-button {
+        background-color: rgba(197, 62, 8, 0.8);
+        padding: 10px 20px;
+        position: absolute;
+        top: 12%;
+        right: -3%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #000000;
+    }
+
+    .search-button:hover {
+        background-color: rgba(197, 62, 8, 1);
+    }
+
+    a {
+        text-decoration: none;
+    }
+    
+</style>
+</head>
+<body>
+
+    <div class="container-fluid p-0">
+        
+        <!--Background Image-->
+        <img src="pastafull.jpg">
+        
+        <!--Button to Signout-->
+        <a href="Homepage.html" class="login-button">Sign out</a>
+
+        <!--Button to add your own recipe to the data base-->
+        <a href="Add Recipe.html" class="add-button">Add your own recipe</a>
+
+        <!--Button to Search database-->
+        <a href="Search.html" class="search-button">Search all recipes</a>
+        
+        <!--Welcome and will require a user name to be pulled from database-->
+        <div class="text-container1">   
+            <h1 class="display-4 text-center">Welcome "User name"</h1>
+            <hr class="my-4">
+            <p class="lead text-center">Welcome to your homepage, from here you can either
+                add a recipe to your database, or you can search recipes 
+                that you have previously added! Hope you enjoy using this product, muchos luvos - Zac and Ando</p>
+        </div>
+        
+        <!--Shows the users currenly saved recipies will need a database command-->
+        <div class="text-container2">
+            <a href="DummyDataBase.html">
+            <p class="display-4 text-center"><b>Traditional Carbonara</b></p>
+            <p class="lead text-center">Made the authentic Italian way with only pasta, pecorino cheese, black pepper and guan charlies</p>
+        </div>
+
+        <div class="text-container2a">
+            <a href="DummyDataBase.html">
+            <p class="display-4 text-center"><b>Traditional Carbonara</b></p>
+            <p class="lead text-center">Made the authentic Italian way with only pasta, pecorino cheese, black pepper and guan charlies</p>
+        </div>
+
+        <div class="text-container2b">
+            <a href="DummyDataBase.html">
+            <p class="display-4 text-center"><b>Traditional Carbonara</b></p>
+            <p class="lead text-center">Made the authentic Italian way with only pasta, pecorino cheese, black pepper and guan charlies</p>
+        </div>
+        
+        <div class="text-container3">
+            <a href="DummyDataBase.html">
+            <p class="display-4 text-center"><b>Japanese Curry</b></p>
+            <p class="lead text-center">Rich and creamy Japanese curry with a modern twist</p>
+        </div>
+
+        <div class="text-container3a">
+            <a href="DummyDataBase.html">
+            <p class="display-4 text-center"><b>Japanese Curry</b></p>
+            <p class="lead text-center">Rich and creamy Japanese curry with a modern twist</p>
+        </div>
+
+        <div class="text-container3b">
+            <a href="DummyDataBase.html">
+            <p class="display-4 text-center"><b>Japanese Curry</b></p>
+            <p class="lead text-center">Rich and creamy Japanese curry with a modern twist</p>
+        </div>
+        
+        <div class="text-container4">
+            <a href="DummyDataBase.html">
+            <p class="display-4 text-center"><b>Apricot Chicken</b></p>
+            <p class="lead text-center">A family delight, home cooked recipe from my childhood</p>
+        </div>
+
+        <div class="text-container4a">
+            <a href="DummyDataBase.html">
+            <p class="display-4 text-center"><b>Apricot Chicken</b></p>
+            <p class="lead text-center">A family delight, home cooked recipe from my childhood</p>
+        </div>
+
+        <div class="text-container4b">
+            <a href="DummyDataBase.html">
+            <p class="display-4 text-center"><b>Apricot Chicken</b></p>
+            <p class="lead text-center">A family delight, home cooked recipe from my childhood</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
