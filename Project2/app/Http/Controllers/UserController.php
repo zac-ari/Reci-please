@@ -45,6 +45,22 @@ class UserController extends Controller
 
     
     /**
+<<<<<<< HEAD
+     * Update the specified resource in storage.
+     */
+    /*
+    public function update(Request $request)
+    {
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $price = $request->input('price');
+        $picture = $request->input('picture');
+        $item = DB::update('update menus set name = ?,description=?,price=?,picture=? where name = ?',
+            [$name,$description,$price,$picture,$name]);
+        return $item;
+    }
+    */
+=======
      * Allows the user to change the recipe details from the name of the recipe
      * Title,Description,Ingredients,Method
      * This is roughly how i would do an update function for the database; however, as a 
@@ -84,10 +100,21 @@ class UserController extends Controller
          return response()->json(['message' => 'User updated successfully']);
      }
      
+>>>>>>> 3a67302ddb7def95c5886763d4639b1e35b36b70
 
     /**
      * Remove the specified resource from storage.
      */
+<<<<<<< HEAD
+    /*
+    public function delete(Request $request)
+    {
+        $name = $request->query('name');
+        $item = DB::delete('delete from menus where name = ?',[$name]);
+        return $item;
+    }
+    */
+=======
     public function delete(Request $request)
     {
         $UserID = $request->query('UserID');
@@ -99,4 +126,5 @@ class UserController extends Controller
             return response()->json(['message' => 'User not found'], 404);
         }
     }
+>>>>>>> 3a67302ddb7def95c5886763d4639b1e35b36b70
 }

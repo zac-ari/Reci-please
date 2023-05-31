@@ -74,16 +74,17 @@ T" crossorigin="anonymous">
     <div class="container-fluid p-0">
         
 		<!--Background Image-->
-        <img src="pastafull.jpg">
+        <img src="Images/pastafull.jpg">
         
 		<!--Button to go back to homepage (login not user)-->
-        <a href="Homepage.html" class="logout-button">Back</a>  
+        <a href="Homepage" class="logout-button">Back</a>  
 
 		<!--Enter details to login, action on login button required to confirm there is a users that matches in database-->
         <div class="text-container1">
             <h1 class="text-center">Log In</h1>
             <hr class="my-4">
-            <form action="UserHomepage.html" method="post">
+            <form action="UserHomepage" method="post">
+                
             	<div class="form-group">
             		<label for="name">Name:</label>
             		<input type="text" class="form-control" id="name" name="name" required>
@@ -98,7 +99,8 @@ T" crossorigin="anonymous">
 			</form>	
 		
 		<!--Button to go to registration-->
-		<form action="Register.html" method="post">
+		<form action="Register" method="post">
+            
 			<div class="form-group">
 			<p class="lead text-center">Not a member? Register now.</p>
 			<button type="submit" class="btb btb-primary">Register</button>
@@ -106,7 +108,8 @@ T" crossorigin="anonymous">
 		</form>
 		
 		<!--Button for password reset-->
-		<form action="PasswordReset.html" method="post">
+		<form action="PasswordReset" method="post">
+            
 			<div class="form-group">
 			<p class="lead text-center">Forgot Password?</p>
 			<button type="submit" class="btb btb-primary">Reset Password</button>
