@@ -78,30 +78,68 @@ T" crossorigin="anonymous">
     a {
         text-decoration: none;
     }
-    
-</style>
+    </style>
+   
+    <!-- JavaScript -->
+    <script>
+        // Fetch recipe data from the API
+        fetch("Put API call or XHTML ref etc")                                      //*************IMPORTANT READ HERE*******************/
+        //xmlhttp.open("GET", "http://localhost:8000/api/Recipe",true);
+        //xmlhttp.send();
+            .then(response => response.json())
+            .then(data => {
+                // Get the recipe container elements
+                const recipeContainers = document.querySelectorAll(".recipe-container");
+
+                // Iterate over the recipe containers and populate them with data
+                recipeContainers.forEach((container, index) => {
+                    const recipe = data[index];
+
+                    // Update the recipe title
+                    const titleElement = container.querySelector(".recipe-title");
+                    titleElement.textContent = recipe.title;
+
+                    // Update the recipe method
+                    const methodElement = container.querySelector(".recipe-method");
+                    methodElement.textContent = recipe.method;
+
+                    // Update the review method
+                    const reviewElement = container.querySelector(".recipe-review");
+                    reviewElement.textContent = recipe.review;
+
+                    // Set the recipe link href
+                    const recipeLink = container.querySelector(".recipe-link");
+                    recipeLink.href = "DummyDataBase";
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching recipe data:", error);
+            });
+    </script>
 </head>
+
 <body>
 
     <div class="container-fluid p-0">
         
         <!--Background image-->
-        <img src="pastafull.jpg">
+        <img src="Images/pastafull.jpg">
         
         <!--Button to return to user home page-->
-        <a href="UserHomepage.html" class="logout-button">Home</a>  
+        <a href="UserHomepage" class="logout-button">Home</a>  
         
         <!--Button to add recipe to user page (via slot selection page) will only be present if you navigate from selecting a recipe to add (i.e not if you select from your menu)-->
-        <a href="RecipeSelection.html" class="add-button">Add to page</a>
+        <a href="RecipeSelection" class="add-button">Add to page</a>
         
         <!--Shows the display as a template but needs SQL database commands to provide inputs-->
         <div class="text-container1">
-            <h1 class="text-center">Dummy page that will pull the recipe from the database</h1>
+            <h1 class="text-center">Recipe View</h1>
             <hr class="my-4">
-            <p class="lead text-center">Title for recipe</p>
+            <p class="lead text-center"><b class="recipe-title"></b></p>
             <hr class="my-4">
-            <p class="lead text-center">Instructions/Method/reviews</p>
+            <p class="lead text-center"><b class="recipe-method"></b></p>
             <div class="text-center">
+            <p class="lead text-center"><b class="recipe-review"></b></p>
             <hr class="my-4">
             
             <!--Add a review section present if you select a recipe from your user homepage and needs action on submit to update SQL data base-->

@@ -38,11 +38,6 @@ class ReviewController extends Controller
         
     }
 
-    
-    /**
-     * Allows the user to change the review details, specifically the rating and comments
-     */
-    
      public function update(Request $request)
      {
          // Update the recipe with the provided data

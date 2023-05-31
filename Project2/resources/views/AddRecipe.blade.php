@@ -71,16 +71,16 @@ T" crossorigin="anonymous">
     <div class="container-fluid p-0">
         
         <!--Background image-->
-        <img src="pastafull.jpg">
+        <img src="Images/pastafull.jpg">
         
         <!--Button to return to user home page-->
-        <a href="UserHomepage.html" class="logout-button">Home</a>  
+        <a href="UserHomepage" class="logout-button">Home</a>  
         
         <!--User can add recipe action needs to load to database-->
         <div class="text-container1">
             <h1 class="text-center">Add Your Recipe</h1>
             <hr class="my-4">
-            <form action="UserHomepage.html" method="post">
+            <form action="UserHomepage" method="post">
               <div class="form-group">
                 <label for="title">Title:<br></label>
                 <input type="text" class="form-control" id="title" name="title" required>
