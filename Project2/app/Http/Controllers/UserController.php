@@ -17,7 +17,7 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new user.
      */
     public function adduser(Request $request)
     {
@@ -25,7 +25,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Find a specific user based off ID.
      */
     
     public function find(Request $request)
@@ -37,12 +37,6 @@ class UserController extends Controller
         return $result;
         
     }
-
-    public function create()
-    {
-        //SQL command for create
-    }
-
     
     /**
      * Allows the user to change the recipe details from the name of the recipe
@@ -57,11 +51,6 @@ class UserController extends Controller
      
          // Find the user based on the UserID
          $user = User::find($userID);
-     
-         // Check if the user exists
-         if (!$user) {
-             return response()->json(['message' => 'User not found'], 404);
-         }
      
          // Update the user with the provided data
          $user->Username = $request->input('Username');

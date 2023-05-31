@@ -17,7 +17,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created review in the database
      */
     public function addreview(Request $request)
     {
@@ -25,7 +25,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a specific review based off its ID.
      */
     
     public function find(Request $request)
@@ -51,9 +51,13 @@ class ReviewController extends Controller
          // Update the recipe with the provided data
          $Rating = $request->input('Rating');
          $Comments = $request->input('Comments');
-         $item = DB::update('update Review set Rating = ?, Comments = ?',[$Rating,$Comments]);
+         $updatereview = DB::update('update Review set Rating = ?, Comments = ?',[$Rating,$Comments]);
          // Return a response indicating success
-         return response()->json(['message' => 'User review has been updated successfully']);
+         if($updatereview){
+            return response()->json(['message' => 'User review has been updated successfully']);
+         } else {
+            return response()->json(['message' => 'User review has been updated successfully']);
+         }
      }
      
     /**

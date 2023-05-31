@@ -23,7 +23,7 @@ use App\Http\Controllers\ReviewController;
 Route::group(['prefix' => 'Recipe'], function () {
     Route::get('/', [RecipeController::class, 'index']);
     Route::get('find', [RecipeController::class, 'find']);
-    Route::post('/', [RecipeController::class, 'addrecipe']);
+    Route::post('addrecipe', [RecipeController::class, 'addrecipe']);
     Route::put('update', [RecipeController::class, 'update']);
     Route::delete('delete', [RecipeController::class, 'delete']);
 });
