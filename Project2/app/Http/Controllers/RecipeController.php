@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Recipe;
+use App\Models\User;
+use App\Models\Review;
 use Illuminate\Support\Facades\DB;
-
 class RecipeController extends Controller
 {
     /**
@@ -61,7 +62,6 @@ class RecipeController extends Controller
     public function delete(Request $request)
     {
         $recipeID = $request->query('RecipeID');
-        
         // Delete associated records in other tables
         DB::table('Reviews')->where('RecipeID', $recipeID)->delete();
         #DB::table('Users')->where('RecipeID', $recipeID)->delete();
