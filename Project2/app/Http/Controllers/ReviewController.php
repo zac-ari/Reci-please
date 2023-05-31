@@ -40,10 +40,7 @@ class ReviewController extends Controller
 
     
     /**
-     * Allows the user to change the recipe details from the name of the recipe
-     * Title,Description,Ingredients,Method
-     * This is roughly how i would do an update function for the database; however, as a 
-     * design priciple we decided against allowing this function.
+     * Allows the user to change the review details, specifically the rating and comments
      */
     
      public function update(Request $request)
