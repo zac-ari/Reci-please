@@ -46,29 +46,22 @@ class UserController extends Controller
      */
      public function update(Request $request)
      {
-         // Get the UserID
-         $userID = $request->input('UserID');
-     
-         // Find the user based on the UserID
-         $user = User::find($userID);
-     
          // Update the user with the provided data
-         $user->Username = $request->input('Username');
-         $user->Email = $request->input('Email');
-         $user->Password = $request->input('Password');
-         $user->Fav1 = $request->input('Fav1');
-         $user->Fav2 = $request->input('Fav2');
-         $user->Fav3 = $request->input('Fav3');
-         $user->Fav4 = $request->input('Fav4');
-         $user->Fav5 = $request->input('Fav5');
-         $user->Fav6 = $request->input('Fav6');
-         $user->Fav7 = $request->input('Fav7');
-         $user->Fav8 = $request->input('Fav8');
-         $user->Fav9 = $request->input('Fav9');
-     
-         // Save the updated user
-         $user->save();
-     
+         $Username = $request->input('Username');
+         $Email = $request->input('Email');
+         $Password = $request->input('Password');
+         $Fav1 = $request->input('Fav1');
+         $Fav2 = $request->input('Fav2');
+         $Fav3 = $request->input('Fav3');
+         $Fav4 = $request->input('Fav4');
+         $Fav5 = $request->input('Fav5');
+         $Fav6 = $request->input('Fav6');
+         $Fav7 = $request->input('Fav7');
+         $Fav8 = $request->input('Fav8');
+         $Fav9 = $request->input('Fav9');
+         
+         $item = DB::update('update users set Username = ?, Email = ?, Password = ?, Fav1 = ?, Fav2 = ?, Fav3 = ?
+         , Fav4 = ?, Fav5 = ?, Fav6 = ?, Fav7 = ?, Fav8 = ?, Fav9 = ?',[$Username,$Email,$Password,$Fav1,$Fav2,$Fav3,$Fav4,$Fav5,$Fav6,$Fav7,$Fav8,$Fav9]);
          // Return a response indicating success
          return response()->json(['message' => 'User updated successfully']);
      }

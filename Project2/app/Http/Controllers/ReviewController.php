@@ -32,7 +32,7 @@ class ReviewController extends Controller
     {
         
         $ReviewID = $request->query('ReviewID');
-        $result = DB::table('recipes')->where('ReviewID', $ReviewID)->get();
+        $result = DB::table('reviews')->where('ReviewID', $ReviewID)->get();
         
         return $result;
         
@@ -51,7 +51,7 @@ class ReviewController extends Controller
          // Update the recipe with the provided data
          $Rating = $request->input('Rating');
          $Comments = $request->input('Comments');
-         $updatereview = DB::update('update Review set Rating = ?, Comments = ?',[$Rating,$Comments]);
+         $updatereview = DB::update('update Reviews set Rating = ?, Comments = ?',[$Rating,$Comments]);
          // Return a response indicating success
          if($updatereview){
             return response()->json(['message' => 'User review has been updated successfully']);
