@@ -40,6 +40,34 @@ class ReviewController extends Controller
 
     
     /**
+<<<<<<< HEAD
+     * Update the specified resource in storage.
+     */
+    /*
+    public function update(Request $request)
+    {
+        $name = $request->input('name');
+        $description = $request->input('description');
+        $price = $request->input('price');
+        $picture = $request->input('picture');
+        $item = DB::update('update menus set name = ?,description=?,price=?,picture=? where name = ?',
+            [$name,$description,$price,$picture,$name]);
+        return $item;
+    }
+    */
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    /*
+    public function delete(Request $request)
+    {
+        $name = $request->query('name');
+        $item = DB::delete('delete from menus where name = ?',[$name]);
+        return $item;
+    }
+    */
+=======
      * Allows the user to change the recipe details from the name of the recipe
      * Title,Description,Ingredients,Method
      * This is roughly how i would do an update function for the database; however, as a 
@@ -70,4 +98,5 @@ class ReviewController extends Controller
             return response()->json(['message' => 'Review not found'], 404);
         }
     }
+>>>>>>> 3a67302ddb7def95c5886763d4639b1e35b36b70
 }

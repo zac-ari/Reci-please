@@ -313,88 +313,123 @@ T" crossorigin="anonymous">
     }
     
 </style>
+
+<!-- JavaScript -->
+<script>
+  // Function to fetch data from the API and update the recipe content
+  function fetchRecipes() {
+    fetch("Put API call or XHTML ref etc")                                      //*************IMPORTANT READ HERE*******************/
+    //var xmlhttp = new XMLHttpRequest();
+    //xmlhttp.open("GET", "http://localhost:8000/api/Recipe",true);             //Is GET the API name and can we pass data as needed?
+    //xmlhttp.send();
+      .then(response => response.json())
+      .then(data => {
+        // Update the recipe containers with the fetched data
+        const containers = document.querySelectorAll(".recipe-container");
+        containers.forEach((container, index) => {
+          const recipe = data[index];
+          container.querySelector("h4").textContent = recipe.title;
+          container.querySelector("p").textContent = recipe.description;
+          container.querySelector("a").href = "DummyDataBase/" + recipe.id;
+        });
+      })
+      .catch(error => console.log(error));
+  }
+
+  // Call the fetchRecipes function when the page loads
+  window.addEventListener("load", fetchRecipes);
+</script>
 </head>
 <body>
 
-    <div class="container-fluid p-0">
-        
-        <!--Background Image-->
-        <img src="Images/pastafull.jpg">
-        
-        <!--Button to Signout-->
-        <a href="Homepage" class="login-button">Sign out</a>
+<div class="container-fluid p-0">
+    
+    <!-- Background Image -->
+    <img src="Images/pastafull.jpg">
+    
+    <!-- Button to Signout -->
+    <a href="Homepage" class="login-button">Sign out</a>
 
-        <!--Button to add your own recipe to the data base-->
-        <a href="AddRecipe" class="add-button">Add your own recipe</a>
+    <!-- Button to add your own recipe to the database -->
+    <a href="AddRecipe" class="add-button">Add your own recipe</a>
 
-        <!--Button to Search database-->
-        <a href="Search" class="search-button">Search all recipes</a>
-        
-        <!--Welcome and will require a user name to be pulled from database-->
-        <div class="text-container1">   
-            <h1 class="display-4 text-center">Welcome "User name"</h1>
-            <hr class="my-4">
-            <p class="lead text-center">Welcome to your homepage, from here you can either
-                add a recipe to your database, or you can search recipes 
-                that you have previously added! Hope you enjoy using this product, muchos luvos - Zac and Ando</p>
-        </div>
-        
-        <!--Shows the users currenly saved recipies will need a database command-->
-        <div class="text-container2">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Traditional Carbonara</b></p>
-            <p class="lead text-center">Made the authentic Italian way with only pasta, pecorino cheese, black pepper and guan charlies</p>
-        </div>
-
-        <div class="text-container2a">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Traditional Carbonara</b></p>
-            <p class="lead text-center">Made the authentic Italian way with only pasta, pecorino cheese, black pepper and guan charlies</p>
-        </div>
-
-        <div class="text-container2b">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Traditional Carbonara</b></p>
-            <p class="lead text-center">Made the authentic Italian way with only pasta, pecorino cheese, black pepper and guan charlies</p>
-        </div>
-        
-        <div class="text-container3">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Japanese Curry</b></p>
-            <p class="lead text-center">Rich and creamy Japanese curry with a modern twist</p>
-        </div>
-
-        <div class="text-container3a">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Japanese Curry</b></p>
-            <p class="lead text-center">Rich and creamy Japanese curry with a modern twist</p>
-        </div>
-
-        <div class="text-container3b">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Japanese Curry</b></p>
-            <p class="lead text-center">Rich and creamy Japanese curry with a modern twist</p>
-        </div>
-        
-        <div class="text-container4">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Apricot Chicken</b></p>
-            <p class="lead text-center">A family delight, home cooked recipe from my childhood</p>
-        </div>
-
-        <div class="text-container4a">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Apricot Chicken</b></p>
-            <p class="lead text-center">A family delight, home cooked recipe from my childhood</p>
-        </div>
-
-        <div class="text-container4b">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Apricot Chicken</b></p>
-            <p class="lead text-center">A family delight, home cooked recipe from my childhood</p>
-        </div>
-
+    <!-- Button to search the database -->
+    <a href="Search" class="search-button">Search all recipes</a>
+    
+    <!-- Welcome and username pulled from the database -->
+    <div class="text-container1">   
+        <h1 class="display-4 text-center">Welcome <span id="username"></span></h1>
+        <hr class="my-4">
+        <p class="lead text-center">Welcome to your homepage, from here you can either
+            add a recipe to your database, or you can search recipes 
+            that you have previously added! Hope you enjoy using this product, muchos luvos - Zac and Ando</p>
     </div>
+    
+    <!-- Recipe containers for dynamically updating the content -->
+    <div class="recipe-container text-container2">
+        <a href="#" class="recipe-link">
+            <h4 class="display-4 text-center"></h4>
+            <p class="lead text-center"></p>
+        </a>
+    </div>
+
+    <div class="recipe-container text-container2a">
+        <a href="#" class="recipe-link">
+            <h4 class="display-4 text-center"></h4>
+            <p class="lead text-center"></p>
+        </a>
+    </div>
+
+    <div class="recipe-container text-container2b">
+        <a href="#" class="recipe-link">
+            <h4 class="display-4 text-center"></h4>
+            <p class="lead text-center"></p>
+        </a>
+    </div>
+    
+    <div class="recipe-container text-container3">
+        <a href="#" class="recipe-link">
+            <h4 class="display-4 text-center"></h4>
+            <p class="lead text-center"></p>
+        </a>
+    </div>
+
+    <div class="recipe-container text-container3a">
+        <a href="#" class="recipe-link">
+            <h4 class="display-4 text-center"></h4>
+            <p class="lead text-center"></p>
+        </a>
+    </div>
+
+    <div class="recipe-container text-container3b">
+        <a href="#" class="recipe-link">
+            <h4 class="display-4 text-center"></h4>
+            <p class="lead text-center"></p>
+        </a>
+    </div>
+    
+    <div class="recipe-container text-container4">
+        <a href="#" class="recipe-link">
+            <h4 class="display-4 text-center"></h4>
+            <p class="lead text-center"></p>
+        </a>
+    </div>
+
+    <div class="recipe-container text-container4a">
+        <a href="#" class="recipe-link">
+            <h4 class="display-4 text-center"></h4>
+            <p class="lead text-center"></p>
+        </a>
+    </div>
+
+    <div class="recipe-container text-container4b">
+        <a href="#" class="recipe-link">
+            <h4 class="display-4 text-center"></h4>
+            <p class="lead text-center"></p>
+        </a>
+    </div>
+
+</div>
 
 </body>
 </html>

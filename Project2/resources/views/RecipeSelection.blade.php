@@ -301,13 +301,13 @@ T" crossorigin="anonymous">
 
     <div class="container-fluid p-0">
         <!--Background image-->
-        <img src="pastafull.jpg">
+        <img src="Images/pastafull.jpg">
         
         <!--Button to return home-->
-        <a href="UserHomepage.html" class="login-button">Home</a>
+        <a href="UserHomepage" class="login-button">Home</a>
 
         <!--Button to return to search page-->
-        <a href="Search.html" class="search-button">Reaturn to Search</a>
+        <a href="Search" class="search-button">Reaturn to Search</a>
         
         <!--Information to the user and instructions an action needs to be added to show the recipe selected not just the word "recipe selected"-->
         <div class="text-container1">   
@@ -318,7 +318,7 @@ T" crossorigin="anonymous">
         
         <!--Shows What is cuurently stored in this slot in the user homepage and if selected will replace recipe selected into the slot(Requires action button to execute SQL command to change datatbase)-->
         <div class="text-container2">
-            <form action="UserHomepage.html">
+            <form action="UserHomepage">
               <p class="display-4 text-center"><b>Add to Slot 1</b></p>
               <!--Needs to be replace with SQL command to pull information from this slot in user home page-->
               <p class="lead text-center">Currently Traditional Cabonara</p>
@@ -328,7 +328,7 @@ T" crossorigin="anonymous">
 
         <!--Shows What is cuurently stored in this slot in the user homepage and if selected will replace recipe selected into the slot(Requires action button to execute SQL command to change datatbase)-->
         <div class="text-container2a">
-            <form action="UserHomepage.html">
+            <form action="UserHomepage">
                 <p class="display-4 text-center"><b>Add to Slot 2</b></p>
                 <!--Needs to be replace with SQL command to pull information from this slot in user home page-->
                 <p class="lead text-center">Currently Traditional Cabonara</p>
@@ -338,7 +338,7 @@ T" crossorigin="anonymous">
 
         <!--Shows What is cuurently stored in this slot in the user homepage and if selected will replace recipe selected into the slot(Requires action button to execute SQL command to change datatbase)-->
         <div class="text-container2b">
-            <form action="UserHomepage.html">
+            <form action="UserHomepage">
                 <p class="display-4 text-center"><b>Add to Slot 3</b></p>
                 <!--Needs to be replace with SQL command to pull information from this slot in user home page-->
                 <p class="lead text-center">Currently Traditional Cabonara</p>
@@ -348,7 +348,7 @@ T" crossorigin="anonymous">
         
         <!--Shows What is cuurently stored in this slot in the user homepage and if selected will replace recipe selected into the slot(Requires action button to execute SQL command to change datatbase)-->
         <div class="text-container3">
-            <form action="UserHomepage.html">
+            <form action="UserHomepage">
                 <p class="display-4 text-center"><b>Add to Slot 4</b></p>
                 <!--Needs to be replace with SQL command to pull information from this slot in user home page-->
                 <p class="lead text-center">Currently Japanese Curry</p>
@@ -358,7 +358,7 @@ T" crossorigin="anonymous">
 
         <!--Shows What is cuurently stored in this slot in the user homepage and if selected will replace recipe selected into the slot(Requires action button to execute SQL command to change datatbase)-->
         <div class="text-container3a">
-            <form action="UserHomepage.html">
+            <form action="UserHomepage">
                 <p class="display-4 text-center"><b>Add to Slot 5</b></p>
                 <!--Needs to be replace with SQL command to pull information from this slot in user home page-->
                 <p class="lead text-center">Currently Japanese Curry</p>
@@ -368,7 +368,7 @@ T" crossorigin="anonymous">
 
         <!--Shows What is cuurently stored in this slot in the user homepage and if selected will replace recipe selected into the slot(Requires action button to execute SQL command to change datatbase)-->
         <div class="text-container3b">
-            <form action="UserHomepage.html">
+            <form action="UserHomepage">
                 <p class="display-4 text-center"><b>Add to Slot 6</b></p>
                 <!--Needs to be replace with SQL command to pull information from this slot in user home page-->
                 <p class="lead text-center">Currently Empty</p>
@@ -378,7 +378,7 @@ T" crossorigin="anonymous">
         
         <!--Shows What is cuurently stored in this slot in the user homepage and if selected will replace recipe selected into the slot(Requires action button to execute SQL command to change datatbase)-->
         <div class="text-container4">
-            <form action="UserHomepage.html">
+            <form action="UserHomepage">
                 <p class="display-4 text-center"><b>Add to Slot 7</b></p>
                 <!--Needs to be replace with SQL command to pull information from this slot in user home page-->
                 <p class="lead text-center">Currently Aproicot Chicken</p>
@@ -388,7 +388,7 @@ T" crossorigin="anonymous">
 
         <!--Shows What is cuurently stored in this slot in the user homepage and if selected will replace recipe selected into the slot(Requires action button to execute SQL command to change datatbase)-->
         <div class="text-container4a">
-            <form action="UserHomepage.html">
+            <form action="UserHomepage">
                 <p class="display-4 text-center"><b>Add to Slot 8</b></p>
                 <!--Needs to be replace with SQL command to pull information from this slot in user home page-->
                 <p class="lead text-center">Currently Apricot Chicken</p>
@@ -398,7 +398,7 @@ T" crossorigin="anonymous">
 
         <!--Shows What is cuurently stored in this slot in the user homepage and if selected will replace recipe selected into the slot (Requires action button to execute SQL command to change datatbase)-->
         <div class="text-container4b">
-            <form action="UserHomepage.html">
+            <form action="UserHomepage">
                 <p class="display-4 text-center"><b>Add to Slot 9</b></p>
                 <!--Needs to be replace with SQL command to pull information from this slot in user home page-->
                 <p class="lead text-center">Currently Empty</p>

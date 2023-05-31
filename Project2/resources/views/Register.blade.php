@@ -69,16 +69,16 @@ T" crossorigin="anonymous">
     <div class="container-fluid p-0">
 
         <!--Background Image-->
-        <img src="pastafull.jpg">
+        <img src="Images/pastafull.jpg">
 
         <!--Button to navigate back to homepage (login not user)-->
-        <a href="Homepage.html" class="logout-button">Back</a>
+        <a href="Homepage" class="logout-button">Back</a>
 
         <!--Register Form requires SQL command to add user-->
         <div class="text-container1">
             <h1 class="text-center">Register</h1>
             <hr class="my-4">
-            <form action="UserHomepage.html" method="post" onsubmit="showConfirmation()">
+            <form action="UserHomepage" method="post" onsubmit="showConfirmation()">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" class="form-control" id="name" name="name" required>
