@@ -270,10 +270,10 @@ T" crossorigin="anonymous">
     <div class="container-fluid p-0">
         
         <!--Background image-->
-        <img src="pastafull.jpg">
+        <img src="Images/pastafull.jpg">
         
         <!--Button to return to user home page-->
-        <a href="UserHomepage.html" class="login-button">Home</a>
+        <a href="UserHomepage" class="login-button">Home</a>
         
         <!--Instructions-->
         <div class="text-container1">   
@@ -292,55 +292,55 @@ T" crossorigin="anonymous">
         
         <!--All below containers require action based on search to display results should only show if enough reslts i.e id only 3 results only 3 containers appear, also require action on click to pull information from SQL database-->
         <div class="text-container2">
-            <a href="DummyDataBase.html">
+            <a href="DummyDataBase">
             <p class="display-4 text-center"><b>Result 1</b></p>
             <p class="lead text-center">Summary from <br> database infomation</p>
         </div>
 
         <div class="text-container2a">
-            <a href="DummyDataBase.html">
+            <a href="DummyDataBase">
             <p class="display-4 text-center"><b>Result 2</b></p>
             <p class="lead text-center">Summary from <br> database infomation</p>
         </div>
 
         <div class="text-container2b">
-            <a href="DummyDataBase.html">
+            <a href="DummyDataBase">
             <p class="display-4 text-center"><b>Result 3</b></p>
             <p class="lead text-center">Summary from <br> database infomation</p>
         </div>
         
         <div class="text-container3">
-            <a href="DummyDataBase.html">
+            <a href="DummyDataBase">
                 <p class="display-4 text-center"><b>Result 4</b></p>
                 <p class="lead text-center">Summary from <br> database infomation</p>
         </div>
 
         <div class="text-container3a">
-            <a href="DummyDataBase.html">
+            <a href="DummyDataBase">
             <p class="display-4 text-center"><b>Result 5</b></p>
             <p class="lead text-center">Summary from <br> database infomation</p>
         </div>
 
         <div class="text-container3b">
-            <a href="DummyDataBase.html">
+            <a href="DummyDataBase">
             <p class="display-4 text-center"><b>Result 6</b></p>
             <p class="lead text-center">Summary from <br> database infomation</p>
         </div>
         
         <div class="text-container4">
-            <a href="DummyDataBase.html">
+            <a href="DummyDataBase">
             <p class="display-4 text-center"><b>Result 7</b></p>
             <p class="lead text-center">Summary from <br> database infomation</p>
         </div>
 
         <div class="text-container4a">
-            <a href="DummyDataBase.html">
+            <a href="DummyDataBase">
             <p class="display-4 text-center"><b>Result 8</b></p>
             <p class="lead text-center">Summary from <br> database infomation</p>
         </div>
 
         <div class="text-container4b">
-            <a href="DummyDataBase.html">
+            <a href="DummyDataBase">
             <p class="display-4 text-center"><b>Result 9</b></p>
             <p class="lead text-center">Summary from <br> database infomation</p>
         </div>

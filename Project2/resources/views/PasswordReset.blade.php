@@ -69,10 +69,10 @@ T" crossorigin="anonymous">
     <div class="container-fluid p-0"> 
          
         <!--Background Image--> 
-        <img src="pastafull.jpg"> 
+        <img src="Images/pastafull.jpg"> 
          
         <!--Button to navigate back to homepage (login not user)--> 
-        <a href="Homepage.html" class="logout-button">Back</a>   
+        <a href="Homepage" class="logout-button">Back</a>   
 		 
         <!--Request Password reset--> 
         <div class="text-container1"> 

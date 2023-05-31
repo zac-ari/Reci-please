@@ -139,14 +139,14 @@
 		<div class="container-fluid p-0">
 			
 			<!--Background Image-->
-			<img src="pasta.gif">
+			<img src="Images/pasta.gif">
 			
 			<!--Button to Sign in (also leads to register if youe not a member)-->
-			<a href="Login.blade.php" class="login-button">Sign in</a>
+			<a href="Login" class="login-button">Sign in</a>
 			
 			<!--Welcome Display-->
 			<div class="text-container1">
-				<a href="UserHomepage.html"><!--Needs to be removed only there as a way to bypass the login-->
+				<a href="UserHomepage"><!--Needs to be removed only there as a way to bypass the login-->
 				<h1 class="display-4 text-center">Welcome to Reci-Please</h1>
 				<hr class="my-4">
 				<p class="lead text-center">A place you can store and share you family recipes</p>
@@ -155,21 +155,21 @@
 
 			<!--Sample recipes, requires pull from database-->
 			<div class="text-container2">
-				<a href="Login.html">
+				<a href="Login">
 				<h1 class="display-4 text-center">Traditional Carbonara</h1>
 				<hr class="my-4">
 				<p class="lead text-center">Made the authentic Italian way with only pasta, pecorino cheese, black pepper and guan charlies</p>
 			</div>
 			
 			<div class="text-container3">
-				<a href="Login.html">
+				<a href="Login">
 				<h1 class="display-4 text-center">Japanese Curry</h1>
 				<hr class="my-4">
 				<p class="lead text-center">Rich and creamy Japanese curry with a modern twist</p>
 			</div>
 			
 			<div class="text-container4">
-				<a href="Login.html">
+				<a href="Login">
 				<h1 class="display-4 text-center">Apricot Chicken</h1>
 				<hr class="my-4">
 				<p class="lead text-center">A family delight, home cooked recipe from my childhood</p>
