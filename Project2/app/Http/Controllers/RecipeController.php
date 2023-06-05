@@ -37,8 +37,8 @@ class RecipeController extends Controller
             return response()->json(['message' => 'Recipe not found'], 404);
         }
         return $result;
-        
     }
+    
   
     /**
      * update a recipe based off ID
