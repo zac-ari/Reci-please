@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ReviewController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all reviews
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class ReviewController extends Controller
     }
 
     /**
-     * Display a specific review based off its ID.
+     * Display a specific review based off its ID
      */
     
     public function find(Request $request)
@@ -38,12 +38,16 @@ class ReviewController extends Controller
         
     }
 
+    /**
+     * update review based off ID
+     */
      public function update(Request $request)
      {
          // Update the recipe with the provided data
+         $ReviewID = $request->input('ReviewID');
          $Rating = $request->input('Rating');
          $Comments = $request->input('Comments');
-         $updatereview = DB::update('update Reviews set Rating = ?, Comments = ?',[$Rating,$Comments]);
+         $updatereview = DB::update('update Reviews set Rating = ?, Comments = ? where ReviewID = ?',[$Rating,$Comments,$ReviewID]);
          // Return a response indicating success
          if($updatereview){
             return response()->json(['message' => 'User review has been updated successfully']);
@@ -53,7 +57,7 @@ class ReviewController extends Controller
      }
      
     /**
-     * Remove the specified resource from storage.
+     * Delete a review
      */
     public function delete(Request $request)
     {

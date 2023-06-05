@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all users
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class UserController extends Controller
     }
 
     /**
-     * Find a specific user based off ID.
+     * Find a specific user based off ID
      */
     
     public function find(Request $request)
@@ -39,14 +39,12 @@ class UserController extends Controller
     }
     
     /**
-     * Allows the user to change the recipe details from the name of the recipe
-     * Title,Description,Ingredients,Method
-     * This is roughly how i would do an update function for the database; however, as a 
-     * design priciple we decided against allowing this function.
+     * Update the user based off ID
      */
      public function update(Request $request)
      {
          // Update the user with the provided data
+         $UserID = $request->input('UserID');
          $Username = $request->input('Username');
          $Email = $request->input('Email');
          $Password = $request->input('Password');
@@ -60,15 +58,20 @@ class UserController extends Controller
          $Fav8 = $request->input('Fav8');
          $Fav9 = $request->input('Fav9');
          
-         $item = DB::update('update users set Username = ?, Email = ?, Password = ?, Fav1 = ?, Fav2 = ?, Fav3 = ?
-         , Fav4 = ?, Fav5 = ?, Fav6 = ?, Fav7 = ?, Fav8 = ?, Fav9 = ?',[$Username,$Email,$Password,$Fav1,$Fav2,$Fav3,$Fav4,$Fav5,$Fav6,$Fav7,$Fav8,$Fav9]);
+         $updateuser = DB::update('update users set Username = ?, Email = ?, Password = ?, Fav1 = ?, Fav2 = ?, Fav3 = ?
+         , Fav4 = ?, Fav5 = ?, Fav6 = ?, Fav7 = ?, Fav8 = ?, Fav9 = ? where UserID = ?',[$Username,$Email,$Password,$Fav1,$Fav2,$Fav3,$Fav4,$Fav5,$Fav6,$Fav7,$Fav8,$Fav9,$UserID]);
          // Return a response indicating success
-         return response()->json(['message' => 'User updated successfully']);
+         if($updateuser){
+            return response()->json(['message' => 'User has been updated successfully']);
+         } else {
+            return response()->json(['message' => 'User has been updated successfully']);
+         }
      }
      
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a user
+     * does not delete any recipe or reviews by the user though - lets keep them
      */
     public function delete(Request $request)
     {
