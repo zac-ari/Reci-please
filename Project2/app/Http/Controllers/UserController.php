@@ -30,14 +30,19 @@ class UserController extends Controller
     
     public function find(Request $request)
     {
-        
         $UserID = $request->query('UserID');
         $result = DB::table('users')->where('UserID', $UserID)->get();
         
         return $result;
-        
     }
     
+    public function findfav(Request $request)
+    {
+        $UserID = $request->query('UserID');
+        $result = DB::table('users')->where('UserID', $UserID)->get();
+        
+        return $result;
+    }
     /**
      * Update the user based off ID
      */
