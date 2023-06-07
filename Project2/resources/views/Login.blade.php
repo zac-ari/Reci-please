@@ -99,7 +99,7 @@ T" crossorigin="anonymous">
 			</form>	
 		
 		<!--Button to go to registration-->
-		<form action="Register" method="post">
+		<form action="Register1" method="get">
             
 			<div class="form-group">
 			<p class="lead text-center">Not a member? Register now.</p>
@@ -108,7 +108,7 @@ T" crossorigin="anonymous">
 		</form>
 		
 		<!--Button for password reset-->
-		<form action="PasswordReset" method="post">
+		<form action="PasswordReset" method="get">
             
 			<div class="form-group">
 			<p class="lead text-center">Forgot Password?</p>

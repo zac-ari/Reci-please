@@ -314,31 +314,38 @@ T" crossorigin="anonymous">
     
 </style>
 
-<!-- JavaScript -->
-<script>
-  // Function to fetch data from the API and update the recipe content
-  function fetchRecipes() {
-    fetch("Put API call or XHTML ref etc")                                      //*************IMPORTANT READ HERE*******************/
-    //var xmlhttp = new XMLHttpRequest();
-    //xmlhttp.open("GET", "http://localhost:8000/api/Recipe",true);             //Is GET the API name and can we pass data as needed?
-    //xmlhttp.send();
-      .then(response => response.json())
-      .then(data => {
+    <!-- JavaScript -->
+    <script>
+/*
+    // Function to fetch data from the API and update the recipe content
+    function fetchRecipes(userID) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        let result = (this.responseText);
+
         // Update the recipe containers with the fetched data
-        const containers = document.querySelectorAll(".recipe-container");
-        containers.forEach((container, index) => {
+        const containers = result.querySelectorAll(".recipe-container");
+        containers.forEach(container, index) => {
           const recipe = data[index];
           container.querySelector("h4").textContent = recipe.title;
           container.querySelector("p").textContent = recipe.description;
           container.querySelector("a").href = "DummyDataBase/" + recipe.id;
-        });
-      })
-      .catch(error => console.log(error));
+
   }
 
-  // Call the fetchRecipes function when the page loads
-  window.addEventListener("load", fetchRecipes);
-</script>
+    xmlhttp.open("GET", "http://127.0.0.1:8000/api/Recipies/find", true);   //add userID url http://localhost:8000/api/Recipe/find?RecipeID=1 set var (userID) not 1
+    xmlhttp.send();
+
+
+    // need to call fetch 9 times write another function 
+*/    
+
+    
+
+
+
+    </script>
 </head>
 <body>
 

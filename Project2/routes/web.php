@@ -57,13 +57,15 @@ Route::get('/RecipeSelection', function () {
     return view('RecipeSelection');
 });
 
-Route::get('/Register', function () {
+Route::get('/Register1', function () {
     return view('Register');
 });
+
 
 Route::post('/Register', function () {
     return view('Register');
 });
+
 
 Route::get('/Search', function () {
     return view('Search');
