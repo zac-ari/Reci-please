@@ -31,6 +31,7 @@ Route::group(['prefix' => 'Recipe'], function () {
 Route::group(['prefix' => 'User'], function () {
     Route::get('/', [UserController::class, 'index']);
     Route::get('find', [UserController::class, 'find']);
+    Route::get('findfav', [UserController::class, 'findfav']);
     Route::post('adduser', [UserController::class, 'adduser']);
     Route::put('update', [UserController::class, 'update']);
     Route::delete('delete', [UserController::class, 'delete']);

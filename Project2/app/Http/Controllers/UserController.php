@@ -36,13 +36,29 @@ class UserController extends Controller
         return $result;
     }
     
+
+
     public function findfav(Request $request)
-    {
-        $UserID = $request->query('UserID');
-        $result = DB::table('users')->where('UserID', $UserID)->get();
-        
-        return $result;
-    }
+{
+    $UserID = $request->query('UserID');
+    $result = DB::table('users')
+        ->select('users.fav1 as fav1_id', 'r1.Title as fav1_title', 'r1.Description as fav1_description', 'users.fav2 as fav2_id', 'r2.Title as fav2_title', 'r2.Description as fav2_description', 'users.fav3 as fav3_id', 'r3.Title as fav3_title', 'r3.Description as fav3_description', 'users.fav4 as fav4_id', 'r4.Title as fav4_title', 'r4.Description as fav4_description', 'users.fav5 as fav5_id', 'r5.Title as fav5_title', 'r5.Description as fav5_description', 'users.fav6 as fav6_id', 'r6.Title as fav6_title', 'r6.Description as fav6_description', 'users.fav7 as fav7_id', 'r7.Title as fav7_title', 'r7.Description as fav7_description', 'users.fav8 as fav8_id', 'r8.Title as fav8_title', 'r8.Description as fav8_description', 'users.fav9 as fav9_id', 'r9.Title as fav9_title', 'r9.Description as fav9_description')
+        ->leftJoin('recipes as r1', 'users.fav1', '=', 'r1.RecipeID')
+        ->leftJoin('recipes as r2', 'users.fav2', '=', 'r2.RecipeID')
+        ->leftJoin('recipes as r3', 'users.fav3', '=', 'r3.RecipeID')
+        ->leftJoin('recipes as r4', 'users.fav4', '=', 'r4.RecipeID')
+        ->leftJoin('recipes as r5', 'users.fav5', '=', 'r5.RecipeID')
+        ->leftJoin('recipes as r6', 'users.fav6', '=', 'r6.RecipeID')
+        ->leftJoin('recipes as r7', 'users.fav7', '=', 'r7.RecipeID')
+        ->leftJoin('recipes as r8', 'users.fav8', '=', 'r8.RecipeID')
+        ->leftJoin('recipes as r9', 'users.fav9', '=', 'r9.RecipeID')
+        ->where('users.UserID', $UserID)
+        ->get();
+
+    return $result;
+}
+
+    
     /**
      * Update the user based off ID
      */
