@@ -316,28 +316,39 @@ T" crossorigin="anonymous">
 
 <!-- JavaScript -->
 <script>
-  // Function to fetch data from the API and update the recipe content
-  function fetchRecipes() {
-    fetch("Put API call or XHTML ref etc")                                      //*************IMPORTANT READ HERE*******************/
-    //var xmlhttp = new XMLHttpRequest();
-    //xmlhttp.open("GET", "http://localhost:8000/api/Recipe",true);             //Is GET the API name and can we pass data as needed?
-    //xmlhttp.send();
-      .then(response => response.json())
-      .then(data => {
-        // Update the recipe containers with the fetched data
-        const containers = document.querySelectorAll(".recipe-container");
-        containers.forEach((container, index) => {
-          const recipe = data[index];
-          container.querySelector("h4").textContent = recipe.title;
-          container.querySelector("p").textContent = recipe.description;
-          container.querySelector("a").href = "DummyDataBase/" + recipe.id;
-        });
-      })
-      .catch(error => console.log(error));
-  }
-
-  // Call the fetchRecipes function when the page loads
-  window.addEventListener("load", fetchRecipes);
+    // Displaying title and description of favorite recipes
+    window.onload = function() {
+        var userID=2; //update to be dynamic based off userID [we need to set up logging in]
+        var xmlhttp = new XMLHttpRequest();
+        var result;
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                result = (this.responseText);
+                //The next line is being hardcoded but needs to be pulled from the user better (note, Fav2)
+                //Or we could probably just copy and paste the shit out of this so we have Fav1...Fav9
+                //var FavOut = "http://localhost:8000/api/Recipe/find?RecipeID="+JSON.parse(result)[0].Fav2;
+                for (let i =1; i < 10; i++) {
+                    var FavOut = "http://localhost:8000/api/Recipe/find?RecipeID=" + JSON.parse(result)[0]['Fav' + i];
+                var xmlhttp2 = new XMLHttpRequest();
+                xmlhttp2.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let result2 = (this.responseText);
+                        //Lets all boxes be filled out; but only grabs the title and description from the favout value
+                        //for(let i = 0; i<9;i++){
+                            var titleElement = document.getElementById('recipe-title-' + (i-1));
+                            var descriptionElement = document.getElementById('recipe-description-' + (i-1));
+                            titleElement.textContent = JSON.parse(result2)[0].Title;
+                            descriptionElement.textContent = JSON.parse(result2)[0].Description;
+                        }
+                    }
+                    xmlhttp2.open("GET", FavOut, true);
+                    xmlhttp2.send();
+                }
+            }
+        }
+    xmlhttp.open("GET", "http://localhost:8000/api/User/find?UserID="+userID, true);
+    xmlhttp.send();
+    };
 </script>
 </head>
 <body>
@@ -368,66 +379,66 @@ T" crossorigin="anonymous">
     <!-- Recipe containers for dynamically updating the content -->
     <div class="recipe-container text-container2">
         <a href="#" class="recipe-link">
-            <h4 class="display-4 text-center"></h4>
-            <p class="lead text-center"></p>
+            <h4 class="display-4 text-center" id="recipe-title-0"></h4>
+            <p class="lead text-center" id="recipe-description-0"></p>
         </a>
     </div>
-
+    
     <div class="recipe-container text-container2a">
-        <a href="#" class="recipe-link">
-            <h4 class="display-4 text-center"></h4>
-            <p class="lead text-center"></p>
-        </a>
-    </div>
+    <a href="#" class="recipe-link">
+      <h4 class="display-4 text-center" id="recipe-title-1"></h4>
+      <p class="lead text-center" id="recipe-description-1"></p>
+    </a>
+  </div>
 
-    <div class="recipe-container text-container2b">
-        <a href="#" class="recipe-link">
-            <h4 class="display-4 text-center"></h4>
-            <p class="lead text-center"></p>
-        </a>
-    </div>
-    
-    <div class="recipe-container text-container3">
-        <a href="#" class="recipe-link">
-            <h4 class="display-4 text-center"></h4>
-            <p class="lead text-center"></p>
-        </a>
-    </div>
+  <div class="recipe-container text-container2b">
+    <a href="#" class="recipe-link">
+      <h4 class="display-4 text-center" id="recipe-title-2"></h4>
+      <p class="lead text-center" id="recipe-description-2"></p>
+    </a>
+  </div>
 
-    <div class="recipe-container text-container3a">
-        <a href="#" class="recipe-link">
-            <h4 class="display-4 text-center"></h4>
-            <p class="lead text-center"></p>
-        </a>
-    </div>
+  <div class="recipe-container text-container3">
+    <a href="#" class="recipe-link">
+      <h4 class="display-4 text-center" id="recipe-title-3"></h4>
+      <p class="lead text-center" id="recipe-description-3"></p>
+    </a>
+  </div>
 
-    <div class="recipe-container text-container3b">
-        <a href="#" class="recipe-link">
-            <h4 class="display-4 text-center"></h4>
-            <p class="lead text-center"></p>
-        </a>
-    </div>
-    
-    <div class="recipe-container text-container4">
-        <a href="#" class="recipe-link">
-            <h4 class="display-4 text-center"></h4>
-            <p class="lead text-center"></p>
-        </a>
-    </div>
+  <div class="recipe-container text-container3a">
+    <a href="#" class="recipe-link">
+      <h4 class="display-4 text-center" id="recipe-title-4"></h4>
+      <p class="lead text-center" id="recipe-description-4"></p>
+    </a>
+  </div>
 
-    <div class="recipe-container text-container4a">
-        <a href="#" class="recipe-link">
-            <h4 class="display-4 text-center"></h4>
-            <p class="lead text-center"></p>
-        </a>
-    </div>
+  <div class="recipe-container text-container3b">
+    <a href="#" class="recipe-link">
+      <h4 class="display-4 text-center" id="recipe-title-5"></h4>
+      <p class="lead text-center" id="recipe-description-5"></p>
+    </a>
+  </div>
 
-    <div class="recipe-container text-container4b">
-        <a href="#" class="recipe-link">
-            <h4 class="display-4 text-center"></h4>
-            <p class="lead text-center"></p>
-        </a>
-    </div>
+  <div class="recipe-container text-container4">
+    <a href="#" class="recipe-link">
+      <h4 class="display-4 text-center" id="recipe-title-6"></h4>
+      <p class="lead text-center" id="recipe-description-6"></p>
+    </a>
+  </div>
+
+  <div class="recipe-container text-container4a">
+    <a href="#" class="recipe-link">
+      <h4 class="display-4 text-center" id="recipe-title-7"></h4>
+      <p class="lead text-center" id="recipe-description-7"></p>
+    </a>
+  </div>
+
+  <div class="recipe-container text-container4b">
+    <a href="#" class="recipe-link">
+      <h4 class="display-4 text-center" id="recipe-title-8"></h4>
+      <p class="lead text-center" id="recipe-description-8"></p>
+    </a>
+  </div>
 
 </div>
 
