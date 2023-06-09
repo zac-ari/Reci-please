@@ -36,7 +36,28 @@ class UserController extends Controller
         return $result;
     }
     
+        /*
+    change the following lines to once we add in hashing to the passwords on creation
+    if ($user && password_verify($password, $user->password)) {
+        return response()->json(['UserID' => $user->UserID]);
+    } else {
+        return response()->json(['error' => 'Invalid email or password'], 401);
+    }
+    */
+    public function login(Request $request)
+    {
+        $Email = $request->input('Email');
+        $Password = $request->input('Password');
+    
+        $user = DB::table('users')->where('email', $Email)->first();
 
+        if ($user && $Password === $user->Password) {
+            $_SESSION['UserID'] = $user->UserID;
+            return response()->json(['success' => true, 'UserID' => $user->UserID]);
+        } else {
+            return response()->json(['success' => false, 'error' => 'Invalid email or password'], 401);
+        }
+    }
 
     public function findfav(Request $request)
 {

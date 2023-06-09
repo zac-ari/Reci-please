@@ -69,8 +69,7 @@ T" crossorigin="anonymous">
     
 </style>
 </head>
-<body>
-
+    <body>
     <div class="container-fluid p-0">
         
 		<!--Background Image-->
@@ -83,21 +82,67 @@ T" crossorigin="anonymous">
         <div class="text-container1">
             <h1 class="text-center">Log In</h1>
             <hr class="my-4">
-            <form action="UserHomepage" method="post">
-                
-            	<div class="form-group">
-            		<label for="name">Name:</label>
-            		<input type="text" class="form-control" id="name" name="name" required>
-       			 </div>
-        	<div class="form-group">
-            	<label for="email">Email:</label>
-            	<input type="email" class="form-control" id="email" name="email" required>
-			</div>
-			<br>
-            <button type="submit" class="btn btn-primary">Login</button>
-            <hr class="my-4">
-			</form>	
-		
+            <form id="loginForm" action="login.php" method="post">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <hr class="my-4">
+            </form>
+        </div>
+        
+        <script>
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get the entered email and password
+                var Email = document.getElementById("email").value;
+                var Password = document.getElementById("password").value;
+
+                // Make an API request to check the credentials
+                fetch("http://localhost:8000/api/User/login?", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        Email: Email,
+                        Password: Password
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle the response from the API
+                    if (data.success) {
+                        // Login successful, update the userID
+                        var userID = data.UserID;
+                        console.log("Login successful");
+                        console.log("User ID:", userID);
+                        // Replace the following line with your desired action
+                        window.location.href = "http://localhost:8000/UserHomepage?userID=" + userID;
+                    } else {
+                        // Login failed, display an error message
+                        console.log("Login failed: " + data.error);
+                        // Replace the following line with your desired error handling
+                        alert("Login failed: here" + data.error);
+                    }
+                })
+                .catch(error => {
+                    // Handle any errors that occurred during the API request
+                    console.log("Error: " + error);
+                    // Replace the following line with your desired error handling
+                    alert("An error occurred while processing the request");
+                });
+            });
+        </script>
+
+
 		<!--Button to go to registration-->
 		<form action="Register" method="post">
             

@@ -7,6 +7,7 @@ use App\Models\Recipe;
 use App\Models\User;
 use App\Models\Review;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 class RecipeController extends Controller
 {
     /**
@@ -17,14 +18,40 @@ class RecipeController extends Controller
         return Recipe::all();
     }
 
-    /**
-     * Creates a new recipe off user input
-     */
     public function addrecipe(Request $request)
     {
-        return Recipe::create($request->all());
+        $validatedData = $request->validate([
+            'Title' => 'required',
+            'Description' => 'required',
+            'Ingredients' => 'required',
+            'Method' => 'required',
+        ]);
+    
+        $recipe = new Recipe();
+        $recipe->RecipeID = $this->generateUniqueRecipeID();
+        $recipe->Title = $validatedData['Title'];
+        $recipe->Description = $validatedData['Description'];
+        $recipe->Ingredients = $validatedData['Ingredients'];
+        $recipe->Method = $validatedData['Method'];
+        $recipe->save();
+    
+        return response()->json([
+            'message' => 'Recipe added successfully',
+            'data' => $recipe,
+        ]);
     }
 
+    private function generateUniqueRecipeID()
+    {
+    $recipeID = mt_rand(1, 100);
+
+    // Check if the generated RecipeID already exists in the database
+    while (Recipe::where('RecipeID', $recipeID)->exists()) {
+        $recipeID = mt_rand(1, 100);
+    }
+
+    return $recipeID;
+    }
     /**
      * Display's specific recipe
      */
@@ -39,6 +66,33 @@ class RecipeController extends Controller
         return $result;
     }
     
+    public function findRecipe(Request $request)
+    {
+        $query = $request->query('query');
+    
+        $result = DB::table('recipes')
+            ->where('Title', 'LIKE', '%' . $query . '%')
+            ->orWhere('Description', 'LIKE', '%' . $query . '%')
+            ->select('Title', 'Description') // Select only the desired fields
+            ->get();
+    
+        if ($result->isEmpty()) {
+            return response()->json(['message' => 'No results found'], 404);
+        }
+    
+        return $result;
+    }
+    
+
+    public function findMultipleRecipes(Request $request)
+    {
+    $recipeIDs = $request->input('RecipeIDs');
+    $recipeIDsArray = explode(',', $recipeIDs);
+
+    $recipes = DB::table('recipes')->whereIn('RecipeID', $recipeIDsArray)->get();
+
+    return response()->json($recipes);
+    }
   
     /**
      * update a recipe based off ID

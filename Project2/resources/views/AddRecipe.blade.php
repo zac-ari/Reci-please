@@ -68,37 +68,66 @@ T" crossorigin="anonymous">
 </head>
 <body>
 
-    <div class="container-fluid p-0">
-        
-        <!--Background image-->
-        <img src="Images/pastafull.jpg">
-        
-        <!--Button to return to user home page-->
-        <a href="UserHomepage" class="logout-button">Home</a>  
-        
-        <!--User can add recipe action needs to load to database-->
-        <div class="text-container1">
-            <h1 class="text-center">Add Your Recipe</h1>
+<div class="container-fluid p-0">
+    
+    <!--Background image-->
+    <img src="Images/pastafull.jpg">
+    
+    <!--Button to return to user home page-->
+    <a href="UserHomepage" class="logout-button">Home</a>  
+    
+    <!--User can add recipe action needs to load to database-->
+    <div class="text-container1">
+        <h1 class="text-center">Add Your Recipe</h1>
+        <hr class="my-4">
+        <form id="recipeForm" action="#" method="post">
+        <div class="form-group">
+            <input type="hidden" name="RecipeID">
+            <label for="Title">Title:<br></label>
+            <input type="text" class="form-control" id="Title" name="Title" required>
             <hr class="my-4">
-            <form action="UserHomepage" method="post">
-              <div class="form-group">
-                <label for="title">Title:<br></label>
-                <input type="text" class="form-control" id="title" name="title" required>
-                <hr class="my-4">
-                <label for="summary">Summary:<br></label>
-                <textarea class="form-control" id="summary" name="summary" rows="1" cols="80" required></textarea>
-                <hr class="my-4">
-                <label for="ingredients">Ingredients:<br></label>
-                <textarea class="form-control" id="ingredients" name="ingredients" rows="4" cols="80" required></textarea>
-                <hr class="my-4">
-                <label for="method">Method:<br></label>
-                <textarea class="form-control" id="method" name="method" rows="6" cols="135" required></textarea>
-              </div>
-              <hr class="my-4">
-              <button type="submit" class="btn btn-primary">Add Recipe</button>
-            </form>
-          </div>  
-    </div>
+            <label for="Description">Description:<br></label>
+            <textarea class="form-control" id="Description" name="Description" rows="1" cols="80" required></textarea>
+            <hr class="my-4">
+            <label for="Ingredients">Ingredients:<br></label>
+            <textarea class="form-control" id="Ingredients" name="Ingredients" rows="4" cols="80" required></textarea>
+            <hr class="my-4">
+            <label for="Method">Method:<br></label>
+            <textarea class="form-control" id="Method" name="Method" rows="6" cols="135" required></textarea>
+            <hr class="my-4">
+          </div>
+          <button type="submit" class="btn btn-primary">Add Recipe</button>
+        </form>
+      </div>  
+</div>
+
+<script>
+    document.getElementById("recipeForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Submit the form data asynchronously using fetch API
+        fetch("http://localhost:8000/api/Recipe/addrecipe", {
+            method: this.method,
+            body: new FormData(this)
+        })
+        .then(response => {
+            if (response.ok) {
+                // Display success message
+                alert("Recipe submitted successfully");
+                // Redirect to UserHomepageJS
+                window.location.href = "http://localhost:8000/UserHomepageJS?userID=30";
+            } else {
+                // Display error message
+                alert("Failed to submit recipe");
+            }
+        })
+        .catch(error => {
+            // Display error message
+            alert("Failed to submit recipe");
+            console.error(error);
+        });
+    });
+</script>
 
 </body>
 </html>
