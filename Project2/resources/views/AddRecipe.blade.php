@@ -115,7 +115,7 @@ T" crossorigin="anonymous">
                 // Display success message
                 alert("Recipe submitted successfully");
                 // Redirect to UserHomepageJS
-                window.location.href = "http://localhost:8000/UserHomepageJS?userID=20";
+                window.location.href = "http://localhost:8000/UserHomepageJS?userID=30";
             } else {
                 // Display error message
                 alert("Failed to submit recipe");
