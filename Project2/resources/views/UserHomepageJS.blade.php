@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -316,43 +317,61 @@ T" crossorigin="anonymous">
 
 <!-- JavaScript -->
 <script>
-    // Displaying title and description of favorite recipes
     window.onload = function() {
-        var userID=2; //update to be dynamic based off userID [we need to set up logging in]
+        // Extract the userID from the URL query parameter
+        var urlParams = new URLSearchParams(window.location.search);
+        var userID = urlParams.get('userID');
+
         var xmlhttp = new XMLHttpRequest();
-        var result;
+
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                result = (this.responseText);
-                //The next line is being hardcoded but needs to be pulled from the user better (note, Fav2)
-                //Or we could probably just copy and paste the shit out of this so we have Fav1...Fav9
-                //var FavOut = "http://localhost:8000/api/Recipe/find?RecipeID="+JSON.parse(result)[0].Fav2;
-                for (let i =1; i < 10; i++) {
-                    var FavOut = "http://localhost:8000/api/Recipe/find?RecipeID=" + JSON.parse(result)[0]['Fav' + i];
+                var userResult = JSON.parse(this.responseText);
+
+                var favRecipes = [];
+                for (let i = 1; i < 10; i++) {
+                    var favRecipeID = userResult[0]['Fav' + i];
+                    if (favRecipeID) {
+                        favRecipes.push(favRecipeID);
+                    }
+                }
+
                 var xmlhttp2 = new XMLHttpRequest();
                 xmlhttp2.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
-                        let result2 = (this.responseText);
-                        //Lets all boxes be filled out; but only grabs the title and description from the favout value
-                        //for(let i = 0; i<9;i++){
-                            var titleElement = document.getElementById('recipe-title-' + (i-1));
-                            var descriptionElement = document.getElementById('recipe-description-' + (i-1));
-                            titleElement.textContent = JSON.parse(result2)[0].Title;
-                            descriptionElement.textContent = JSON.parse(result2)[0].Description;
+                        var recipeResults = JSON.parse(this.responseText);
+
+                        for (let i = 0; i < favRecipes.length; i++) {
+                            var recipe = recipeResults.find(function(item) {
+                                return item.RecipeID === favRecipes[i];
+                            });
+
+                            if (recipe) {
+                                var titleElement = document.getElementById('recipe-title-' + i);
+                                var descriptionElement = document.getElementById('recipe-description-' + i);
+                                titleElement.textContent = recipe.Title;
+                                descriptionElement.textContent = recipe.Description;
+                            }
                         }
                     }
-                    xmlhttp2.open("GET", FavOut, true);
-                    xmlhttp2.send();
-                }
+                };
+
+                var recipeIDs = favRecipes.join(',');
+                var favRecipesURL = "http://localhost:8000/api/Recipe/findMultipleRecipes?RecipeIDs=" + recipeIDs;
+
+                xmlhttp2.open("GET", favRecipesURL, true);
+                xmlhttp2.send();
             }
-        }
-    xmlhttp.open("GET", "http://localhost:8000/api/User/find?UserID="+userID, true);
-    xmlhttp.send();
+        };
+
+        xmlhttp.open("GET", "http://localhost:8000/api/User/find?UserID=" + userID, true);
+        xmlhttp.send();
     };
 </script>
+
+
 </head>
 <body>
-
 <div class="container-fluid p-0">
     
     <!-- Background Image -->

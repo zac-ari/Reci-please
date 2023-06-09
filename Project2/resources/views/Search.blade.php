@@ -15,6 +15,7 @@ T" crossorigin="anonymous">
 
 <!--Custom CSS-->
 <style>
+    
     body {
         margin: 0;
         padding: 0;
@@ -227,6 +228,7 @@ T" crossorigin="anonymous">
         text-align: center;
     }
 
+    
     .text-container4b:hover {
         background-color: rgba(196, 195, 219, 1);
     }
@@ -270,82 +272,109 @@ T" crossorigin="anonymous">
     <div class="container-fluid p-0">
         
         <!--Background image-->
-        <img src="Images/pastafull.jpg">
+        <img src="Images/pastafull.jpg"></img>
         
         <!--Button to return to user home page-->
         <a href="UserHomepage" class="login-button">Home</a>
         
-        <!--Instructions-->
-        <div class="text-container1">   
-            <h1 class="display-4 text-center">Find a Recipe</h1>
-            <hr class="my-4">
-            <p>
-                <!--Search bar will require action on search to look at SQL database-->
-                <form>
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="search" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </form>
-            </p>
-        </div>
-        
-        <!--All below containers require action based on search to display results should only show if enough reslts i.e id only 3 results only 3 containers appear, also require action on click to pull information from SQL database-->
-        <div class="text-container2">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Result 1</b></p>
-            <p class="lead text-center">Summary from <br> database infomation</p>
-        </div>
+    <!--Instructions-->
+    <div class="text-container1">   
+        <h1 class="display-4 text-center">Find a Recipe</h1>
+        <hr class="my-4">
+        <p>
+            <!--Search bar will require action on search to look at SQL database-->
+            <form id="searchForm">
+            <div class="form-group">
+                <input type="text" class="form-control" id="search" name="query" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        </p>
+    </div>
+    <!--All below containers require action based on search to display results should only show if enough results
+     i.e., if only 3 results, only 3 containers appear. Also, require action on click to pull information from the SQL database-->
+    <div id="resultsContainer" class="results-container">
+    </div>
 
-        <div class="text-container2a">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Result 2</b></p>
-            <p class="lead text-center">Summary from <br> database infomation</p>
-        </div>
+    <script>
+            const resultsContainer = document.getElementById('resultsContainer');
+            const searchForm = document.getElementById('searchForm');
 
-        <div class="text-container2b">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Result 3</b></p>
-            <p class="lead text-center">Summary from <br> database infomation</p>
-        </div>
-        
-        <div class="text-container3">
-            <a href="DummyDataBase">
-                <p class="display-4 text-center"><b>Result 4</b></p>
-                <p class="lead text-center">Summary from <br> database infomation</p>
-        </div>
+            // Fetch the search results from the API and update the containers
+            function updateResults(query) {
+                // Make the API call to fetch the search results
+                fetch(`http://localhost:8000/api/Recipe/findRecipe?query=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Clear previous results
+                        const containers = document.querySelectorAll('.results-container > div');
+                        containers.forEach(container => container.remove());
 
-        <div class="text-container3a">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Result 5</b></p>
-            <p class="lead text-center">Summary from <br> database infomation</p>
-        </div>
+                        // Iterate through the returned results and create a container for each result
+                        data.forEach((result, index) => {
+                            if (index < 9) {
+                                const containerIndex = index % 9; // Cycle through 9 different box types
+                                let containerClass = '';
 
-        <div class="text-container3b">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Result 6</b></p>
-            <p class="lead text-center">Summary from <br> database infomation</p>
-        </div>
-        
-        <div class="text-container4">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Result 7</b></p>
-            <p class="lead text-center">Summary from <br> database infomation</p>
-        </div>
+                                switch (containerIndex) {
+                                case 0:
+                                    containerClass = '2';
+                                    break;
+                                case 1:
+                                    containerClass = '2a';
+                                    break;
+                                case 2:
+                                    containerClass = '2b';
+                                    break;
+                                case 3:
+                                    containerClass = '3';
+                                    break;
+                                case 4:
+                                    containerClass = '3a';
+                                    break;
+                                case 5:
+                                    containerClass = '3b';
+                                    break;
+                                case 6:
+                                    containerClass = '4';
+                                    break;
+                                case 7:
+                                    containerClass = '4a';
+                                    break;
+                                case 8:
+                                    containerClass = '4b';
+                                    break;
+                                }
 
-        <div class="text-container4a">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Result 8</b></p>
-            <p class="lead text-center">Summary from <br> database infomation</p>
-        </div>
+                                // Create a new container element
+                                const container = document.createElement('div');
+                                container.className = `text-container${containerClass}`;
 
-        <div class="text-container4b">
-            <a href="DummyDataBase">
-            <p class="display-4 text-center"><b>Result 9</b></p>
-            <p class="lead text-center">Summary from <br> database infomation</p>
-        </div>
+                                container.innerHTML = `
+                                    <a href="DummyDataBase">
+                                        <p class="display-4 text-center"><b>${result.Title}</b></p>
+                                        <p class="lead text-center">${result.Description}</p>
+                                    </a>
+                                `;
+
+                                // Append the container to the results container
+                                resultsContainer.appendChild(container);
+                            }
+                        });
+                    })
+                    .catch(error => console.error(error));
+            }
+
+            // Handle form submission
+            searchForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the default form submission
+                const searchQuery = document.getElementById('search').value;
+                updateResults(searchQuery);
+            });
+        </script>
 
     </div>
+
 
 </body>
 </html>

@@ -74,7 +74,7 @@ Route::get('/Test', function () {
 });
 
 Route::get('/UserHomepage', function () {
-    return view('UserHomepage');
+    return view('UserHomepageJS');
 });
 
 Route::get('/UserHomepageJS', function () {

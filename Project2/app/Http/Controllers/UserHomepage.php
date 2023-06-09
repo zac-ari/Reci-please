@@ -9,6 +9,6 @@ use Illuminate\Support\Facades\DB;
 class UserHomepageController extends Controller
 {
     public function index(){
-        return view('UserHomepage',[]);
+        return view('UserHomepageJS',[]);
     }
 }
